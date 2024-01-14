@@ -1,0 +1,124 @@
+$clr-yellow: hsl(47, 88%, 63%);
+$clr-white: hsl(0, 0%, 100%);
+$clr-grey: hsl(0, 0%, 50%);
+$clr-black: hsl(0, 0%, 7%);
+
+$border-radius: 12px;
+
+$font-small: 0.6rem;
+$font-medium: 1rem;
+$font-bold: 800;
+$font-semibold: 500;
+
+@mixin flex-container($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/Figtree-VariableFont_wght.ttf");
+}
+
+body {
+  @include flex-container(column);
+
+  height: 100vh;
+  background-color: $clr-yellow;
+
+  font-family: "Figtree", serif;
+}
+
+.attribution {
+  margin-bottom: 10px;
+}
+
+.main {
+  @include flex-container;
+
+  flex: 1;
+}
+
+.blog-card {
+  @include flex-container(column, center, start);
+
+  gap: 8px;
+
+  padding: 16px;
+  width: 250px;
+  background-color: $clr-white;
+
+  outline: 1px solid black;
+  box-shadow: 6px 6px 0px black;
+  border-radius: $border-radius;
+
+
+  &__img {
+    width: 100%;
+    margin-bottom: 8px;
+    border-radius: $border-radius / 2;
+  }
+
+  &__tag {
+    background-color: $clr-yellow;
+    padding: 4px 8px;
+    border-radius: $border-radius / 3;
+
+    font-size: $font-small;
+    font-weight: $font-bold;
+  }
+
+  &__date {
+    font-size: $font-small;
+    font-weight: $font-semibold;
+  }
+
+  &__title {
+    margin: 4px 0;
+
+    font-size: $font-medium;
+    font-weight: $font-bold;
+  }
+
+  &__link {
+    font-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $clr-yellow;
+    }
+  }
+
+  &__desc {
+    margin-bottom: 6px;
+
+    color: $clr-grey;
+    font-size: $font-small + 0.05rem;
+    font-weight: $font-semibold;
+    line-height: 1.5;
+  }
+
+  &__author {
+    @include flex-container;
+
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__author-avatar {
+    width: 20px;
+  }
+
+  &__author-name {
+    font-size: $font-small;
+    font-weight: $font-bold;
+  }
+}
