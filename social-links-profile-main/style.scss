@@ -1,0 +1,108 @@
+$clr-green: hsl(75, 94%, 57%);
+$clr-white: hsl(0, 0%, 100%);
+$clr-grey: hsl(0, 0%, 20%);
+$clr-dark-grey: hsl(0, 0%, 12%);
+$clr-off-black: hsl(0, 0%, 8%);
+
+
+@mixin flex-container($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+body {
+  @include flex-container(column, start);
+  height: 100vh;
+
+  font-family: Inter;
+  background-color: $clr-off-black;
+}
+
+.attribution {
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+.card {
+  @include flex-container(column, start);
+  gap: 16px;
+
+  background-color: $clr-dark-grey;
+  width: clamp(200px, 25%, 250px);
+  margin: auto;
+  padding: clamp(12px, 2%, 24px);
+  border-radius: 4px;
+
+  font-size: 14px;
+  color: $clr-white;
+
+  &__profile {
+    @include flex-container(column);
+  }
+
+  &__avatar {
+    width: 60px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    margin-top: 16px;
+
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  &__location {
+    margin-top: 8px;
+    margin-bottom: 16px;
+
+    color: $clr-green;
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  &__bio {
+    font-size: 9px;
+    font-weight: 300;
+  }
+
+  &__btns {
+    @include flex-container(column);
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__btn {
+    background-color: $clr-grey;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 4px;
+
+    color: $clr-white;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+
+    &:focus,
+    &:hover {
+      background-color: $clr-green;
+      color: $clr-dark-grey;
+    }
+  }
+}
